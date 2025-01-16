@@ -1,7 +1,11 @@
 # Handwriting-to-text-MINI-PROJECT-
 handwriting to text converter
 
+## ⚠️ Important: Do not directly change in this main repo. rather make the changes in ur forked repo and then make a pull request
+
 ## fork the repository
+<br>
+fork by clicking on the fork button
 <br>
 
 ![image](https://github.com/user-attachments/assets/97d1239e-8607-4e5b-bf4d-c7010ff2ff25)
