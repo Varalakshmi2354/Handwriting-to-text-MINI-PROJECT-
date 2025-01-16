@@ -3,7 +3,8 @@ handwriting to text converter
 
 ## fork the repository
 <br>
-![image](https://github.com/user-attachments/assets/611067b5-002e-4b7a-8c75-321c3b7c1042)
+
+![image](https://github.com/user-attachments/assets/97d1239e-8607-4e5b-bf4d-c7010ff2ff25)
 
 
 
