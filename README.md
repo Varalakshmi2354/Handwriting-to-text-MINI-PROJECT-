@@ -20,6 +20,11 @@ git clone URL
 
 ```
 
+![image](https://github.com/user-attachments/assets/33194c70-d502-4e84-b62b-84a746719b1b)
+
+<br>
+the url u need to paste
+
 -> get inside ur repo
 
 ```
