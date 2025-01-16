@@ -9,7 +9,9 @@ handwriting to text converter
 git clone URL
 
 '''
+
 get inside ur repo
+
 '''
 
 cd repo_name
