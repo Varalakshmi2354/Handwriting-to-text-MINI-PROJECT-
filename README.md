@@ -2,6 +2,9 @@
 handwriting to text converter
 
 ## fork the repository
+<br>
+![image](https://github.com/user-attachments/assets/392f4912-9e8b-461d-9ffa-93410befce93)
+
 
 ## clone the forked repository\
 ->paste ur url link in the place of url
@@ -36,4 +39,5 @@ cd HandwritingToText
 # to edit the html css file:
 
 HTML CSS JS files are saved in the templates folder in the converter folder
+<br>
 ![image](https://github.com/user-attachments/assets/fa60ee97-838d-4325-a23b-645c75ed9ac2)
