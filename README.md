@@ -47,6 +47,14 @@ pip install django
 cd HandwritingToText
 
 ```
+
+# run the website by 
+```
+
+ python manage.py runserver 8080
+
+```
+
 # to edit the html css file:
 
 HTML CSS JS files are saved in the templates folder in the converter folder
