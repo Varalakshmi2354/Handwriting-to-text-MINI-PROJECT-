@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from converter.views import home
+from converter.views import home, upload_pdf  # Import both views properly
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home, name='index.html')
+    path('', home, name='home'),  # Fix: Use a proper name instead of 'index.html'
+    path('upload/', upload_pdf, name='upload_pdf'),  # Fix: Added missing comma
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
