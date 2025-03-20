@@ -5,6 +5,7 @@ import os
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
     return render(request, 'converter/index.html')
@@ -34,6 +35,7 @@ def extract_images_from_pdf(pdf_path):
 
     return extracted_images
 
+@csrf_exempt  # Add this line to disable CSRF for this function
 def upload_pdf(request):
     """ Handle PDF file upload and extract images. """
     if request.method == "POST" and request.FILES.get("pdf"):
