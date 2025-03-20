@@ -10,7 +10,7 @@ def home(request):
     return render(request, 'converter/index.html')
 
 def extract_images_from_pdf(pdf_path):
-    """ Extract images from a given PDF and save them. """
+    """Extract images from a given PDF and save them."""
     output_folder = os.path.join(settings.MEDIA_ROOT, "extracted_images")
     os.makedirs(output_folder, exist_ok=True)
 
@@ -18,9 +18,18 @@ def extract_images_from_pdf(pdf_path):
     extracted_images = []
 
     for page_num in range(len(doc)):
-        for img_index, img in enumerate(doc[page_num].get_images(full=True)):
+        images = doc[page_num].get_images(full=True)
+        if not images:
+            print(f"No images found on page {page_num+1}")  # Debugging
+            continue  # Skip pages without images
+
+        for img_index, img in enumerate(images):
             xref = img[0]
             base_image = doc.extract_image(xref)
+            if not base_image:
+                print(f"Failed to extract image {img_index+1} on page {page_num+1}")
+                continue
+
             image_bytes = base_image["image"]
             img_ext = base_image["ext"]  # Get image format (png, jpeg, etc.)
 
@@ -35,13 +44,19 @@ def extract_images_from_pdf(pdf_path):
     return extracted_images
 
 def upload_pdf(request):
-    """ Handle PDF file upload and extract images. """
+    """Handle PDF file upload and extract images."""
     if request.method == "POST" and request.FILES.get("pdf"):
         pdf_file = request.FILES["pdf"]
-        file_path = default_storage.save("temp_pdfs/" + pdf_file.name, ContentFile(pdf_file.read()))
+        file_name = default_storage.save("temp_pdfs/" + pdf_file.name, pdf_file)
+
+        # Full path of the saved file
+        pdf_path = os.path.join(settings.MEDIA_ROOT, file_name)
 
         # Extract images from PDF
-        extracted_images = extract_images_from_pdf(os.path.join(settings.MEDIA_ROOT, file_path))
+        extracted_images = extract_images_from_pdf(pdf_path)
+
+        if not extracted_images:
+            return JsonResponse({"message": "No images found in the PDF."}, status=200)
 
         return JsonResponse({"message": "Images extracted successfully!", "images": extracted_images})
 
